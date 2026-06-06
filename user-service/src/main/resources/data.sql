@@ -1,0 +1,3 @@
+-- Seed data for User Service
+-- Admin user is now created by DataInitializer with proper BCrypt encoding
+-- Default credentials: admin / 123456

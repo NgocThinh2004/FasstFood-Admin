@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  user-db:
+    image: mysql:8.0
+    container_name: fastfood-user-db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user_db
+    volumes:
+      - user-db-data:/var/lib/mysql
+    networks:
+      - fastfood-network
+
+  product-db:
+    image: mysql:8.0
+    container_name: fastfood-product-db
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: product_db
+    volumes:
+      - product-db-data:/var/lib/mysql
+    networks:
+      - fastfood-network
+
+  order-db:
+    image: mysql:8.0
+    container_name: fastfood-order-db
+    ports:
+      - "3309:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: order_db
+    volumes:
+      - order-db-data:/var/lib/mysql
+    networks:
+      - fastfood-network
+
+  shipper-db:
+    image: mysql:8.0
+    container_name: fastfood-shipper-db
+    ports:
+      - "3310:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shipper_db
+    volumes:
+      - shipper-db-data:/var/lib/mysql
+    networks:
+      - fastfood-network
+
+volumes:
+  user-db-data:
+  product-db-data:
+  order-db-data:
+  shipper-db-data:
+
+networks:
+  fastfood-network:
+    driver: bridge
